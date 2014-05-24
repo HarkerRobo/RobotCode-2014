@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>package RobotCode2014;<a name="line.1"></a>
+<span class="sourceLineNo">002</span><a name="line.2"></a>
+<span class="sourceLineNo">003</span>import edu.wpi.first.wpilibj.command.Command;<a name="line.3"></a>
+<span class="sourceLineNo">004</span>import edu.wpi.first.wpilibj.command.Scheduler;<a name="line.4"></a>
+<span class="sourceLineNo">005</span>import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;<a name="line.5"></a>
+<span class="sourceLineNo">006</span><a name="line.6"></a>
+<span class="sourceLineNo">007</span>import RobotCode2014.commands.CommandBase;<a name="line.7"></a>
+<span class="sourceLineNo">008</span>import RobotCode2014.commands.drivetrain.*;<a name="line.8"></a>
+<span class="sourceLineNo">009</span>import RobotCode2014.commands.manipulator.*;<a name="line.9"></a>
+<span class="sourceLineNo">010</span>import RobotCode2014.commands.misc.*;<a name="line.10"></a>
+<span class="sourceLineNo">011</span>import RobotCode2014.wrappers.GamePadWrapper;<a name="line.11"></a>
+<span class="sourceLineNo">012</span>import RobotCode2014.wrappers.JoystickButtonWrapper;<a name="line.12"></a>
+<span class="sourceLineNo">013</span><a name="line.13"></a>
+<span class="sourceLineNo">014</span><a name="line.14"></a>
+<span class="sourceLineNo">015</span>/**<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * This class is the glue that binds the controls on the physical operator<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * interface to the commands and command groups that allow control of the robot.<a name="line.17"></a>
+<span class="sourceLineNo">018</span> */<a name="line.18"></a>
+<span class="sourceLineNo">019</span>public class OI {<a name="line.19"></a>
+<span class="sourceLineNo">020</span>    <a name="line.20"></a>
+<span class="sourceLineNo">021</span>    public static Command manualDriveRestore = new RestoreManualDriveCommand();<a name="line.21"></a>
+<span class="sourceLineNo">022</span>    public static Command manualDrive = new ManualDriveCommand();<a name="line.22"></a>
+<span class="sourceLineNo">023</span>    <a name="line.23"></a>
+<span class="sourceLineNo">024</span>    public static Command manualPitch = new ManualPitchAndRetractCommand();<a name="line.24"></a>
+<span class="sourceLineNo">025</span>    public static Command manualPitchRestore = new RestoreManualPitchCommand();<a name="line.25"></a>
+<span class="sourceLineNo">026</span>    <a name="line.26"></a>
+<span class="sourceLineNo">027</span>    public static GamePadWrapper gamepad1 = new GamePadWrapper(1);<a name="line.27"></a>
+<span class="sourceLineNo">028</span>    public static GamePadWrapper gamepad2 = new GamePadWrapper(2);<a name="line.28"></a>
+<span class="sourceLineNo">029</span>    <a name="line.29"></a>
+<span class="sourceLineNo">030</span>    public OI() {<a name="line.30"></a>
+<span class="sourceLineNo">031</span>        SmartDashboard.putData(Scheduler.getInstance());<a name="line.31"></a>
+<span class="sourceLineNo">032</span>        SmartDashboard.putData(CommandBase.drivetrain);<a name="line.32"></a>
+<span class="sourceLineNo">033</span>        SmartDashboard.putData(CommandBase.manipPitch);<a name="line.33"></a>
+<span class="sourceLineNo">034</span>        <a name="line.34"></a>
+<span class="sourceLineNo">035</span><a name="line.35"></a>
+<span class="sourceLineNo">036</span>        SmartDashboard.putData(new UpdateConstantsCommand());<a name="line.36"></a>
+<span class="sourceLineNo">037</span>        <a name="line.37"></a>
+<span class="sourceLineNo">038</span>        /**************Button mapping*******************<a name="line.38"></a>
+<span class="sourceLineNo">039</span>         * The below commands map buttons to the commands that are supposed to <a name="line.39"></a>
+<span class="sourceLineNo">040</span>         *  operate when the buttons are pressed.<a name="line.40"></a>
+<span class="sourceLineNo">041</span>         *  <a name="line.41"></a>
+<span class="sourceLineNo">042</span>         * @author Manan<a name="line.42"></a>
+<span class="sourceLineNo">043</span>         * @author Andrew<a name="line.43"></a>
+<span class="sourceLineNo">044</span>         * @author Vedaad<a name="line.44"></a>
+<span class="sourceLineNo">045</span>         ***********************************************/<a name="line.45"></a>
+<span class="sourceLineNo">046</span>        JoystickButtonWrapper g1b1 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad1, 1);<a name="line.46"></a>
+<span class="sourceLineNo">047</span>        JoystickButtonWrapper g1b2 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad1, 2);<a name="line.47"></a>
+<span class="sourceLineNo">048</span>        JoystickButtonWrapper g1b3 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad1, 3);<a name="line.48"></a>
+<span class="sourceLineNo">049</span>        JoystickButtonWrapper g1b4 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad1, 4);<a name="line.49"></a>
+<span class="sourceLineNo">050</span>        JoystickButtonWrapper g1b5 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad1, 5);<a name="line.50"></a>
+<span class="sourceLineNo">051</span>        JoystickButtonWrapper g1b6 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad1, 6);<a name="line.51"></a>
+<span class="sourceLineNo">052</span>        JoystickButtonWrapper g1b7 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad1, 7);<a name="line.52"></a>
+<span class="sourceLineNo">053</span>        JoystickButtonWrapper g1b8 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad1, 8);<a name="line.53"></a>
+<span class="sourceLineNo">054</span>        <a name="line.54"></a>
+<span class="sourceLineNo">055</span>        JoystickButtonWrapper g2b1 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad2, 1);<a name="line.55"></a>
+<span class="sourceLineNo">056</span>        JoystickButtonWrapper g2b2 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad2, 2);<a name="line.56"></a>
+<span class="sourceLineNo">057</span>        JoystickButtonWrapper g2b3 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad2, 3);<a name="line.57"></a>
+<span class="sourceLineNo">058</span>        JoystickButtonWrapper g2b4 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad2, 4);<a name="line.58"></a>
+<span class="sourceLineNo">059</span>        JoystickButtonWrapper g2b5 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad2, 5);<a name="line.59"></a>
+<span class="sourceLineNo">060</span>        JoystickButtonWrapper g2b6 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad2, 6);<a name="line.60"></a>
+<span class="sourceLineNo">061</span>        JoystickButtonWrapper g2b7 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad2, 7);<a name="line.61"></a>
+<span class="sourceLineNo">062</span>        JoystickButtonWrapper g2b8 = new RobotCode2014.wrappers.JoystickButtonWrapper(gamepad2, 8);<a name="line.62"></a>
+<span class="sourceLineNo">063</span>        <a name="line.63"></a>
+<span class="sourceLineNo">064</span>        //Button    8           Collect balls<a name="line.64"></a>
+<span class="sourceLineNo">065</span>        //Button    6           Reject balls<a name="line.65"></a>
+<span class="sourceLineNo">066</span>        g1b6.whilePressed(new CollectCommand());<a name="line.66"></a>
+<span class="sourceLineNo">067</span>        g1b8.whilePressed(new RejectCommand());<a name="line.67"></a>
+<span class="sourceLineNo">068</span>        <a name="line.68"></a>
+<span class="sourceLineNo">069</span>        g1b6.whilePressed(new PitchCommand(-.4));<a name="line.69"></a>
+<span class="sourceLineNo">070</span>        g1b8.whilePressed(new PitchCommand(.4));<a name="line.70"></a>
+<span class="sourceLineNo">071</span>        <a name="line.71"></a>
+<span class="sourceLineNo">072</span>        g1b4.whenPressed(new ToggleClampCommand());<a name="line.72"></a>
+<span class="sourceLineNo">073</span>        <a name="line.73"></a>
+<span class="sourceLineNo">074</span>        //Button    3           Launch at specified networking angle<a name="line.74"></a>
+<span class="sourceLineNo">075</span>        //since both require manipulator, only one gets called <a name="line.75"></a>
+<span class="sourceLineNo">076</span>        g1b3.whenPressed(new LaunchCommand());<a name="line.76"></a>
+<span class="sourceLineNo">077</span>        <a name="line.77"></a>
+<span class="sourceLineNo">078</span>        g1b1.whenPressed(new UnlockPistonCommand());<a name="line.78"></a>
+<span class="sourceLineNo">079</span>        g1b1.whenReleased(new LockAndRetractPistonCommand());<a name="line.79"></a>
+<span class="sourceLineNo">080</span>        <a name="line.80"></a>
+<span class="sourceLineNo">081</span>        g1b2.toggleWhenPressed(new RetractPistonCommand());<a name="line.81"></a>
+<span class="sourceLineNo">082</span><a name="line.82"></a>
+<span class="sourceLineNo">083</span>        //b3.whenPressed(new RunWithModifier(b5, new RobotCode2014.commands.manipulator.LaunchBallCommand()));<a name="line.83"></a>
+<span class="sourceLineNo">084</span>        <a name="line.84"></a>
+<span class="sourceLineNo">085</span>        //Button    1 gamepad2  Launch the ball<a name="line.85"></a>
+<span class="sourceLineNo">086</span>        //LaunchBallCommand is medium level code while LaunchCommand is high level code<a name="line.86"></a>
+<span class="sourceLineNo">087</span>        //b9 does the same thing as b12<a name="line.87"></a>
+<span class="sourceLineNo">088</span>        //b9.whenPressed(new LaunchBallCommand());<a name="line.88"></a>
+<span class="sourceLineNo">089</span>        <a name="line.89"></a>
+<span class="sourceLineNo">090</span>        //Button    8 gamepad2  collect ball<a name="line.90"></a>
+<span class="sourceLineNo">091</span>        g2b8.whilePressed(new CollectCommand());<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        <a name="line.92"></a>
+<span class="sourceLineNo">093</span>        //Button    6 gamepad2  Reject ball<a name="line.93"></a>
+<span class="sourceLineNo">094</span>        g2b6.whilePressed(new RejectCommand());<a name="line.94"></a>
+<span class="sourceLineNo">095</span>        <a name="line.95"></a>
+<span class="sourceLineNo">096</span>        //Button    3 gamepad2  Toggle clamp<a name="line.96"></a>
+<span class="sourceLineNo">097</span>        g2b3.whenPressed(new ToggleClampCommand());<a name="line.97"></a>
+<span class="sourceLineNo">098</span>        <a name="line.98"></a>
+<span class="sourceLineNo">099</span>        //BUtton    4 gamepad2  Toggles the piston<a name="line.99"></a>
+<span class="sourceLineNo">100</span>        g2b4.whenPressed(new UnlockPistonCommand());<a name="line.100"></a>
+<span class="sourceLineNo">101</span>        g2b4.whenReleased(new LockPistonCommand());<a name="line.101"></a>
+<span class="sourceLineNo">102</span><a name="line.102"></a>
+<span class="sourceLineNo">103</span>        SmartDashboard.putData(new LaunchBallCommand());<a name="line.103"></a>
+<span class="sourceLineNo">104</span>        SmartDashboard.putData(new LaunchCommand());<a name="line.104"></a>
+<span class="sourceLineNo">105</span>        <a name="line.105"></a>
+<span class="sourceLineNo">106</span>        SmartDashboard.putData(new TurnToAngleCommand(Math.PI)); //180 degrees<a name="line.106"></a>
+<span class="sourceLineNo">107</span>        SmartDashboard.putData(new PitchToAngleCommand(0));<a name="line.107"></a>
+<span class="sourceLineNo">108</span>        <a name="line.108"></a>
+<span class="sourceLineNo">109</span>        SmartDashboard.putData(new RetractPistonCommand());<a name="line.109"></a>
+<span class="sourceLineNo">110</span>        SmartDashboard.putData(new LockAndRetractPistonCommand());<a name="line.110"></a>
+<span class="sourceLineNo">111</span>        <a name="line.111"></a>
+<span class="sourceLineNo">112</span>        SmartDashboard.putData(new LockPistonCommand());<a name="line.112"></a>
+<span class="sourceLineNo">113</span>        SmartDashboard.putData(new UnlockPistonCommand());<a name="line.113"></a>
+<span class="sourceLineNo">114</span>        <a name="line.114"></a>
+<span class="sourceLineNo">115</span>        SmartDashboard.putData("stop compressor", new SetCompressorState(0));<a name="line.115"></a>
+<span class="sourceLineNo">116</span>        SmartDashboard.putData("start compressor", new SetCompressorState(1));<a name="line.116"></a>
+<span class="sourceLineNo">117</span>        <a name="line.117"></a>
+<span class="sourceLineNo">118</span>        <a name="line.118"></a>
+<span class="sourceLineNo">119</span>    }<a name="line.119"></a>
+<span class="sourceLineNo">120</span>}<a name="line.120"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

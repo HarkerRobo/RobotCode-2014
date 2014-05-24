@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>package RobotCode2014.commands;<a name="line.1"></a>
+<span class="sourceLineNo">002</span><a name="line.2"></a>
+<span class="sourceLineNo">003</span>import RobotCode2014.commands.drivetrain.DriveForTimeCommand;<a name="line.3"></a>
+<span class="sourceLineNo">004</span>import RobotCode2014.commands.manipulator.LaunchCommand;<a name="line.4"></a>
+<span class="sourceLineNo">005</span>import edu.wpi.first.wpilibj.command.CommandGroup;<a name="line.5"></a>
+<span class="sourceLineNo">006</span><a name="line.6"></a>
+<span class="sourceLineNo">007</span>/**<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * @author Brian Chan<a name="line.9"></a>
+<span class="sourceLineNo">010</span> */<a name="line.10"></a>
+<span class="sourceLineNo">011</span>public class AutonomousCommandHot extends CommandGroup {<a name="line.11"></a>
+<span class="sourceLineNo">012</span>    <a name="line.12"></a>
+<span class="sourceLineNo">013</span>    public AutonomousCommandHot(double left, double right, double time) {<a name="line.13"></a>
+<span class="sourceLineNo">014</span>        //assumes shootCommand works as intended<a name="line.14"></a>
+<span class="sourceLineNo">015</span>            addSequential(new LaunchCommand());<a name="line.15"></a>
+<span class="sourceLineNo">016</span>            addSequential(new DriveForTimeCommand(time, left, right));<a name="line.16"></a>
+<span class="sourceLineNo">017</span>    }<a name="line.17"></a>
+<span class="sourceLineNo">018</span>}<a name="line.18"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>
