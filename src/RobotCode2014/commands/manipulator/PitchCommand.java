@@ -27,8 +27,8 @@ public class PitchCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(OI.gamepad1.getRawButton(5))
-	    manipPitch.setTargetPitchSpeed(speed);
+        //if(OI.gamepad1.getRawButton(5))
+        manipPitch.setTargetPitchSpeed(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

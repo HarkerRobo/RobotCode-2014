@@ -78,7 +78,6 @@ public class ManipulatorPitch extends Subsystem {
     }
     
     public void setPitchSpeedRaw(double speed) {
-        System.out.println(speed);
         pitchTalon.set(speed); 
     }
     
