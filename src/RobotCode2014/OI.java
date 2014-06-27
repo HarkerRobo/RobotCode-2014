@@ -63,8 +63,8 @@ public class OI {
         
         //Button    8           Collect balls
         //Button    6           Reject balls
-        g1b5.whilePressed(new CollectCommand());
-        g1b7.whilePressed(new RejectCommand());
+        g1b6.whilePressed(new CollectCommand());
+        g1b8.whilePressed(new RejectCommand());
         
         g1b6.whilePressed(new PitchCommand(-.4));
         g1b8.whilePressed(new PitchCommand(.4));

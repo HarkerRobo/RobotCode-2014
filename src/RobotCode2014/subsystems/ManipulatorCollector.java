@@ -18,7 +18,7 @@ public class ManipulatorCollector extends Subsystem {
     private final Relay collectorRelay;	//controls collector wheel
 
     public ManipulatorCollector() {
-        collectorRelay = new Relay(7);
+        collectorRelay = new Relay(5);
 
         LiveWindow.addActuator("Manipulator", "Collector spike", collectorRelay);
     }

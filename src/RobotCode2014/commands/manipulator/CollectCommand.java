@@ -15,15 +15,13 @@ import RobotCode2014.commands.CommandBase;
 public class CollectCommand extends CommandBase {
 
     public CollectCommand() {
-        System.out.println("Collect Command Created");
         requires(manipCollector);
     }
 
     public void start() {
         super.start();
-        System.out.println("Collect Command Started");
-	//if(!OI.gamepad1.getRawButton(5))
-        manipCollector.startCollector();
+	if(!OI.gamepad1.getRawButton(5))
+           manipCollector.startCollector();
     }
 
     // Called just before this Command runs the first time
@@ -41,14 +39,12 @@ public class CollectCommand extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        System.out.println("Collect Command Ended");
         manipCollector.stopCollector();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-        System.out.println("Collect Command interrupted by " + manipCollector.getCurrentCommand().getName());
         end();
     }
 }
